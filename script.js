@@ -8,7 +8,6 @@ const password2 = document.getElementById("password2");
 function showError(input, message) {
   const formControl = input.parentElement;
   formControl.className = "form-control error";
-  console.log("test");
 }
 
 function showSuccess(input) {
@@ -19,7 +18,7 @@ function showSuccess(input) {
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (username.value === " ") {
+  if (username.value === "") {
     showError(username, "Username is required");
   } else {
     showSuccess(username);
