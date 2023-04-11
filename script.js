@@ -17,47 +17,48 @@ function showSuccess(input) {
   formControl.className = "form-control success";
 }
 
+const isValidEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+
+function checkRequired(input) {
+  console.log(input);
+}
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (username.value === "") {
-    showError(username, "Username is required");
-  } else {
-    showSuccess(username);
-  }
-  if (email.value === "") {
-    showError(email, "Email is required");
-  } else if (!isValidEmail(email.value)) {
-    showError(email, "Email is not valid");
-  } else {
-    showSuccess(email);
-  }
-  if (password.value === "") {
-    showError(password, "Password is required");
-  } else {
-    showSuccess(password);
-  }
-  if (password2.value === "") {
-    showError(password2, "Please confirm your password");
-  } else {
-    showSuccess(password2);
-  }
+  checkRequired(username);
+  checkRequired(email);
+  checkRequired(password);
+  checkRequired(password2);
 
-  /*  if (username.value==="")
-    showError(username, "Username is required");
-  else showSuccess(username);
-
-  if (email.value==="")
-    showError(email, "Email is required");
-  else showSuccess(email);
-
-  if (password.value==="")
-    showError(password, "Password is required");
-  else showSuccess(password);
-
-  if (password2.value==="")
-    showError(password2, "Please confirm your password");
-  else showSuccess(password2);*/
+  // if (username.value === "") {
+  //   showError(username, "Username is required");
+  // } else {
+  //   showSuccess(username);
+  // }
+  // if (email.value === "") {
+  //   showError(email, "Email is required");
+  // } else if (!isValidEmail(email.value)) {
+  //   showError(email, "Email is not valid");
+  // } else {
+  //   showSuccess(email);
+  // }
+  // if (password.value === "") {
+  //   showError(password, "Password is required");
+  // } else {
+  //   showSuccess(password);
+  // }
+  // if (password2.value === "") {
+  //   showError(password2, "Please confirm your password");
+  // } else {
+  //   showSuccess(password2);
+  // }
 
   console.log("submit");
 });
