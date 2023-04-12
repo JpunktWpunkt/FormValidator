@@ -17,6 +17,22 @@ function showSuccess(input) {
   formControl.className = "form-control success";
 }
 
+function checkLength(input, min, max) {
+  if (input.value.length < min) {
+    showError(
+      input,
+      `${getFieldName(input)} must be at least ${min} characters`
+    );
+  } else if (input.value.length > max) {
+    showError(
+      input,
+      `${getFieldName(input)} must be less than ${max} characters`
+    );
+  } else {
+    showSuccess(input);
+  }
+}
+
 const isValidEmail = (email) => {
   return String(email)
     .toLowerCase()
@@ -43,6 +59,8 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
 
   checkRequired([username, email, password, password2]);
+  checkLength(username, 5, 15);
+  checkLength(password, 6, 25);
 
   // if (username.value === "") {
   //   showError(username, "Username is required");
